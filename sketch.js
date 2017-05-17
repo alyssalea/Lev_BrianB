@@ -1,46 +1,53 @@
-var x=100;
-var y=0;
+var bryan;
+var song;
+var broccoli;
+var on = "yes"
+var num = 0;
+var r;
+var g;
+var b;
+function preload () {
+  bryan = loadImage("assets/bryan-broccoli.png") 
+  song = loadSound("assets/Brian Broccoli - I Want More Broccoli (Official Music Video).mp3")
+  broccoli = loadImage("assets/broccoli.png")
+}
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background(200,0,0);
-  frameRate(50);
+  createCanvas (windowWidth, windowHeight);
+  r = random(255);
+  g = random(255);
+  b = random(255);
+  background (r,g,b);
+  song.play()
+  imageMode (CENTER);
 }
 
 function draw() {
-  fill(random(0,200),random(0,300),random(0,300),90);
-  textSize(100)
-  
-  text("hopes",random(40,125),random(100,450));
-    fill(random(0,200),random(0,300),random(0,300),90);
-
-  text("dreams",random(40,125),random(100,450));
-  text("h",random(50,400),random(100,450));
-  text("o",random(50,400),random(100,450));
-  text("p",random(50,400),random(100,450));
-  text("e",random(50,400),random(100,450));
-  text("d",random(50,400),random(100,450));
-  text("r",random(50,400),random(100,450));
-  text("e",random(50,400),random(100,450));
-  text("a",random(50,400),random(100,450))
-  text("m",random(50,400),random(100,450));
-  fill(0,0,0)
-  text("reality",x,y);
-
-  y+=1;
-  if (y>500===true){
-  	y=100;
-  }
+  image (bryan, mouseX, mouseY);
+  fill(r,g,b);
   noStroke();
-  if (mouseIsPressed===true){
-  	fill(random(100,0),random(100,0),random(100,0));
-  ellipse(random(0,500),random(0,500),random(50,100),random(50,100));
-  textSize(15);
-  text("forgotten",random(0,500),random(0,500));
-  }
-  
+  rect(0,0,120,50);
+  fill(0);
+  num += 1;
+  var word = "Broccoli count: "+num;
+  text(word,0,25);
+
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth,windowHeight)
+function mousePressed () {
+  r = random(255);
+  g = random(255);
+  b = random(255);
+  background (r,g,b);
+}
+function keyTyped() {
+  if (key == 'p') {
+    if(on=="yes"){
+      song.pause();
+      on="no"
+    } else {
+      song.play();
+      on = "yes";
+    }
+  }
 }
